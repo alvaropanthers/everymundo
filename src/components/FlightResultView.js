@@ -1,23 +1,6 @@
 import React, { Component } from 'react';
 import SortOperations from './SortOperations';
 
-/*
-
-departureDate: "5/26/2019"
-destination: "LAS"
-fareClass: "Economy"
-origin: "MIA"
-returnDate: ""
-routes: Array(6)
-0: {departureTime: "3:39", arrivalTime: "8:46", priceUSD: 88}
-1: {departureTime: "6:11", arrivalTime: "11:33", priceUSD: 92}
-2: {departureTime: "9:37", arrivalTime: "14:29", priceUSD: 97}
-3: {departureTime: "12:15", arrivalTime: "17:57", priceUSD: 91}
-4: {departureTime: "15:24", arrivalTime: "20:48", priceUSD: 96}
-5: {departureTime: "18:41", arrivalTime: "23:11", priceUSD: 80}
-
-*/
-
 class ResultItemView extends Component{
     render(){
         return (
@@ -58,7 +41,6 @@ class FlightResultView extends Component{
 
     selectHandler(event){
         let routes = this.state.routes;
-        console.log("Some item was selected")
         if(Number(event.target.value)=== Number(SortOperations.ROUTE_PRICE_LOW_TO_HIGH)){
             routes = this.sortOperations.sortLowestRoutesByPrice(routes);
         }else if(Number(event.target.value)=== Number(SortOperations.ROUTE_PRICE_HIGH_TO_LOW)){

@@ -115,7 +115,6 @@ class App extends Component {
           showResults: true,
           resultData: response.data
         });
-        console.log(response);
       })
       .catch(error => {
         console.error(error);
