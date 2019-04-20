@@ -4,7 +4,7 @@ import SortOperations from './SortOperations';
 class ResultItemView extends Component{
     render(){
         return (
-            <div className="row result-item-row">
+            <div className="row result-item-container">
                 <div className="col-md-3 result-item">
                     <p className="lead">
                         <span>{this.props.departureTime}</span>
@@ -21,7 +21,7 @@ class ResultItemView extends Component{
                     </p>
                 </div>
                 <div className="col-md-3 result-item">
-                    <p className="lead p-price">
+                    <p className="lead p-bolder">
                         <span>${this.props.priceUSD}</span>
                     </p>
                 </div>
@@ -38,13 +38,16 @@ class FlightResultView extends Component{
         this.sortOperations = new SortOperations();
     }
 
-
     selectHandler(event){
         let routes = this.state.routes;
         if(Number(event.target.value)=== Number(SortOperations.ROUTE_PRICE_LOW_TO_HIGH)){
             routes = this.sortOperations.sortLowestRoutesByPrice(routes);
         }else if(Number(event.target.value)=== Number(SortOperations.ROUTE_PRICE_HIGH_TO_LOW)){
             routes = this.sortOperations.sortHighestRoutesByPrice(routes);
+        }else if(Number(event.target.value)=== Number(SortOperations.ROUTE_DEPARTURE_TIME_LOW_TO_HIGH)){
+            routes = this.sortOperations.sortLowestRoutesByTime(routes);
+        }else if(Number(event.target.value)=== Number(SortOperations.ROUTE_DEPARTURE_TIME_HIGH_TO_LOW)){
+            routes = this.sortOperations.sortHighestRoutesByTime(routes);
         }
 
         if(routes.length){
@@ -84,9 +87,11 @@ class FlightResultView extends Component{
                             </div>
                             <div className="col">
                                 <select id="result-options-select" className="form-control" onChange={this.selectHandler}>
-                                    <option value="1">Sort options</option>
+                                    <option value="0">Sort options</option>
                                     <option value="1">Price - Low to High</option>
                                     <option value="2">Price - High to Low</option>
+                                    <option value="3">Departure - Low to High</option>
+                                    <option value="4">Departure - High to Low</option>
                                 </select>
                             </div>
                         </div>

@@ -12,7 +12,6 @@ class DataProvider{
     }
 
     postSearch(destination, origin, tripType, departureDate, returnDate, passengerCount, promoCode){
-        console.log(destination + " " + origin + " " + tripType + " " + departureDate + " " + returnDate + " " + passengerCount + " " + promoCode)
         return axios.post(POST_URL + API_KEY, {
             destination: destination,
             origin: origin,
